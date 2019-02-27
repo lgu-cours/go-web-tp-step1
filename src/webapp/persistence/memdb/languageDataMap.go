@@ -14,11 +14,18 @@ type LanguageDataMap struct {
 }
 
 var languageDataOnce sync.Once
-var languageDataMap LanguageDataMap
+var languageDataMap  LanguageDataMap
 
 func GetLanguageDataMap() *LanguageDataMap {
 	log.Printf("LanguageDataMap - GetLanguageDataMap() ")
-	languageDataOnce.Do(newLanguageDataMap)
+	
+	// From Golang doc :
+	// "func (o *Once) Do(f func())"
+	// "Do" calls the function "f" if and only if Do is being called for the first time for this instance of Once. 
+	// In other words, given "var once Once" if "once.Do(f)" is called multiple times,
+	// only the first call will invoke f, even if f has a different value in each invocation. 
+	// A new instance of Once is required for each function to execute. 
+	languageDataOnce.Do(newLanguageDataMap) // called only 1 time
 	return &languageDataMap
 }
 
