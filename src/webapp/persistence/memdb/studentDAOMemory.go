@@ -60,7 +60,7 @@ func (this *StudentDAOMemory) Find(id int) *entities.Student {
 func (this *StudentDAOMemory) Exists(id int) bool {
 	log.Printf("DAO - Exists(%d) ", id)
 	_, exists := this.dataMap[id] // search in map
-	log.Printf("DAO - Exists(%d) : ", id, exists)
+	log.Printf("DAO - Exists(%d) : %t ", id, exists)
 	return exists
 }
 

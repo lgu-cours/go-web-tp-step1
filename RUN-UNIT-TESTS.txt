@@ -1,0 +1,8 @@
+
+in "src" :
+
+  go test -v ./... 
+
+  ( -v : verbose )
+  
+  

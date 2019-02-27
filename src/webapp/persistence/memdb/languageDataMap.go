@@ -64,6 +64,8 @@ func (this *LanguageDataMap) remove(code string) {
 }
 
 func (this *LanguageDataMap) values() []entities.Language {
+	this.lock.Lock()
+	defer this.lock.Unlock()
 	var a = make([]entities.Language, len(this.dataMap))
 	i := 0
 	for _, v := range this.dataMap {
